@@ -12,6 +12,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CookingApp"
         tools:targetApi="31">
+        <!-- in Manifest bzw Inhaltsverzeichnis einfügenm -->
+        <activity android:name=".BrowseActivity"/>
+        <activity android:name=".CreateRecipeActivity"/>
+        <activity android:name=".HomeActivity"/>
+        <activity android:name=".LoginActivity"/>
+        <activity android:name=".ProfileActivity"/>
+        <activity android:name=".RecipeActivity"/>
+        <activity android:name=".ResultsActivity"/>
+        <activity android:name=".RegisterActivity"/>
         <activity
             android:name=".MainActivity"
             android:exported="true">
