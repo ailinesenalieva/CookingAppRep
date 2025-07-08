@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">CookingApp</string>
+    <string name="register">Register</string>
+    <string name="registertext">Register here please, if you do not have an account!</string>
+
 </resources>
