@@ -5,7 +5,8 @@ import android.os.Bundle;
 import android.widget.Button;
 
 import android.view.View;
-//import java.lang.Object;
+import java.lang.Object;
+import android.content.Intent;
 import androidx.appcompat.app.AppCompatActivity;
 
 
@@ -16,7 +17,7 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        final Button RegisterButton = findViewById(R.id.button2);
+        final Button RegisterButton = findViewById(R.id.buttonreg);
 
 
 
