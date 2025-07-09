@@ -3,4 +3,7 @@
     <string name="register">Register</string>
     <string name="registertext">Register here please, if you do not have an account!</string>
 
+    <string name="login">Login</string>
+    <string name="logintext">Login here please, if you do have an account!</string>
+
 </resources>
