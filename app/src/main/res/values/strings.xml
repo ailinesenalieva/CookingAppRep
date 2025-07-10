@@ -2,6 +2,11 @@
     <string name="app_name">CookingApp</string>
     <string name="register">Register</string>
     <string name="registertext">Register here please, if you do not have an account!</string>
+    <string name="enterregister">Please enter your Information here</string>
+    <string name="registername">Full name</string>
+    <string name="registeremail">Email</string>
+    <string name="registerpassword">Enter a password</string>
+
 
     <string name="login">Login</string>
     <string name="logintext">Login here please, if you do have an account!</string>
