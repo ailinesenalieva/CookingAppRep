@@ -1,20 +1,38 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/main"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:layout_height="match_parent">
 
-
-    <ImageView
+    <TextView
+        android:id="@+id/txtwelcome"
+        android:text="@string/welcome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/cake_icon"
-        tools:layout_editor_absoluteX="173dp"
-        tools:layout_editor_absoluteY="265dp" />
+        android:textSize="20sp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp" />
 
+    <Button
+        android:id="@+id/buttonlog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/login"
+        android:layout_below="@id/txtwelcome"
+        android:layout_marginTop="40dp" />
 
+    <Button
+        android:id="@+id/buttonreg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/register"
+        android:layout_below="@id/buttonlog"
+        android:layout_marginTop="20dp" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/txtmainreg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/buttonreg"
+        android:text="@string/registertext" />
+
+</RelativeLayout>
