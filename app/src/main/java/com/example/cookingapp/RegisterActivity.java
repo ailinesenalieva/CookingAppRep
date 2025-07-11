@@ -1,4 +1,5 @@
 package com.example.cookingapp;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.view.View;
@@ -47,7 +48,11 @@ public class RegisterActivity extends AppCompatActivity {
 
                 Toast.makeText(RegisterActivity.this, "You registered successfully.", Toast.LENGTH_SHORT).show();
                 finish();
-            }
+
+                startActivity(new Intent(RegisterActivity.this, HomeActivity.class));
+
+                }
+
         });
     }
 }

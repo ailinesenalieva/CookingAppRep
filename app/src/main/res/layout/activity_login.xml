@@ -25,7 +25,7 @@
         android:autofillHints="password"/>
 
     <Button
-        android:id="@+id/buttonlog"
+        android:id="@+id/buttonlogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/inputpassword"
