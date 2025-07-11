@@ -59,6 +59,7 @@ public class LoginActivity extends AppCompatActivity {
                             }}
                         if (loginOk) {
                             Toast.makeText(LoginActivity.this, "Login successful", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(LoginActivity.this, HomeActivity.class));
                         } else {
                             Toast.makeText(LoginActivity.this, "E-Mail or password wrong", Toast.LENGTH_SHORT).show();
                         }}
@@ -69,4 +70,11 @@ public class LoginActivity extends AppCompatActivity {
                 });
             }
         });
-    }}
+    }
+// weiterleitung zu home
+
+
+
+
+
+}
