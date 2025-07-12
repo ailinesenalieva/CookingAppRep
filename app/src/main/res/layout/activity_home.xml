@@ -5,8 +5,37 @@
 
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/txthome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:padding="8dp"
         android:text="@string/welcomename" />
+
+    <Button
+        android:id="@+id/buttonhomesearch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txthome"
+        android:layout_marginTop="100dp"
+        android:paddingStart="8dp"
+        android:paddingTop="4dp"
+        android:paddingEnd="8dp"
+        android:paddingBottom="4dp"
+        android:text="@string/search"
+        android:layout_alignParentEnd="true"/>
+
+    <Button
+        android:id="@+id/buttonprofile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/buttonhomesearch"
+        android:layout_marginTop="645dp"
+        android:paddingStart="8dp"
+        android:paddingTop="4dp"
+        android:paddingEnd="8dp"
+        android:paddingBottom="4dp"
+        android:text="@string/profile" />
+
+
 </RelativeLayout>

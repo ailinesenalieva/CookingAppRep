@@ -12,6 +12,9 @@
     <string name="login">Login</string>
     <string name="logintext">Login here please, if you do have an account!</string>
 
-    <string name="welcomename">Welcome, would like to browse some recipes?</string>
+    <string name="welcomename">    Welcome, would like to browse some recipes?</string>
+
+    <string name="search">Search recipes</string>
+    <string name="profile">My Profile</string>
 
 </resources>
