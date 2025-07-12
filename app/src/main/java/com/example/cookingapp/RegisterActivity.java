@@ -42,9 +42,9 @@ public class RegisterActivity extends AppCompatActivity {
                     return;
                 }
 
-                String userID = rootDatabase.push().getKey();
+                String userId = rootDatabase.push().getKey();
                 User user = new User(name, email, password);
-                rootDatabase.child(userID).setValue(user);
+                rootDatabase.child("user").child(userId).setValue(user);
 
                 Toast.makeText(RegisterActivity.this, "You registered successfully.", Toast.LENGTH_SHORT).show();
                 finish();
