@@ -11,18 +11,10 @@
         android:inputType="text"
         android:padding="20dp" />
 
-    <Spinner
-        android:id="@+id/spinnerfilter"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/searchinput"
-        android:layout_marginTop="12dp" />
-
     <Button
         android:id="@+id/searchbutton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/spinnerfilter"
         android:layout_marginTop="735dp"
         android:text="@string/search" />
 
