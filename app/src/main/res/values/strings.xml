@@ -16,5 +16,6 @@
 
     <string name="search">Search recipes</string>
     <string name="profile">My Profile</string>
+    <string name="searchinput">Enter some keywords like chicken, beef and so on</string>
 
 </resources>
