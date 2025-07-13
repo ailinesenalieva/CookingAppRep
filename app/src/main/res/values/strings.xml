@@ -12,10 +12,15 @@
     <string name="login">Login</string>
     <string name="logintext">Login here please, if you do have an account!</string>
 
-    <string name="welcomename">    Welcome, would like to browse some recipes?</string>
+    <string name="welcomename">Welcome, would like to browse some recipes?</string>
 
     <string name="search">Search recipes</string>
     <string name="profile">My Profile</string>
     <string name="searchinput">Enter some keywords like chicken, beef and so on</string>
+
+    <string name="backtobrowse">Go back to browse</string>
+    <string name="browseinput">Your results for </string>
+    <string name="home">Home</string>
+
 
 </resources>
