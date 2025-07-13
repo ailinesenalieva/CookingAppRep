@@ -33,7 +33,6 @@ public class BrowseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_browse);
         searchinput=findViewById(R.id.searchinput);
-        spinnerfilter=findViewById(R.id.spinnerfilter);
         searchbutton=findViewById(R.id.searchbutton);
         String URL = "https://www.themealdb.com/api/json/v1/1/search.php?s=";//Datenbank/API mit verschiedneen Rezepten
 
@@ -45,8 +44,8 @@ public class BrowseActivity extends AppCompatActivity {
                if(!keyword.isEmpty()){
                    String finalUrl = URL + keyword;// Beispiel https://www.themealdb.com/api/json/v1/1/search.php?s=Arrabiata sucht nach arrabiata
                     //JSONObject Request ist nützlcih um die Daten aus dem Web/DAtenebank zu
-                   JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, URL, null, new Response.Listener<JSONObject>() {
-                       @Override
+                   JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, URL, null, new Response.Listener<JSONObject>() { //JSON Object Request aus Youtube video: https://www.youtube.com/watch?v=pKr0DVoZsEw,
+                       @Override                                                                                                                     // "Retrieve Data From API in Android Studio Fully Explained"
                        public void onResponse(JSONObject response) {
                         try {
                             JSONArray meals = response.optJSONArray("meals");
