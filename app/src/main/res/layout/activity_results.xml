@@ -1,8 +1,8 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true">
-
+    android:fillViewport="true"
+    >
     <LinearLayout
         android:id="@+id/resultslayout"
         android:layout_width="match_parent"
@@ -16,26 +16,30 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center"
-            android:layout_marginTop="16dp">
+            android:layout_marginTop="16dp"
+            >
 
             <Button
                 android:id="@+id/backtobrowse"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Browse" />
+                android:text="@string/backtobrowse"
+                />
 
             <Button
                 android:id="@+id/backhome"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Home"
-                android:layout_marginHorizontal="8dp"/>
+                android:text="@string/home"
+                android:layout_marginHorizontal="8dp"
+                />
 
             <Button
                 android:id="@+id/backprofile"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Profile" />
+                android:text="@string/profile"
+               />
         </LinearLayout>
     </LinearLayout>
 </ScrollView>
