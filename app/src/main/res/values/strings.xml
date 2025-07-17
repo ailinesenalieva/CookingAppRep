@@ -22,5 +22,9 @@
     <string name="browseinput">Your results for </string>
     <string name="home">Home</string>
 
+    <string name="backtoresults">To results</string>
+    <string name="cookedrecipe">I cooked this recipe!</string>
+
+
 
 </resources>
