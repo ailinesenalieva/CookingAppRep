@@ -3,7 +3,7 @@ package com.example.cookingapp;
 public class OwnRecipes {
     public String title, ingredients, instructions, imageUrl, userId;
 
-    public OwnRecipes() {} // Firebase braucht leeren Konstruktor
+    public OwnRecipes() {} // leerer Konstruktor für firebase
 
     public OwnRecipes(String title, String ingredients, String instructions, String imageUrl, String userId) {
         this.title = title;
