@@ -1,33 +1,25 @@
 package com.example.cookingapp;
 
 public class OwnRecipes {
-    private String id;
-    private String userId;
-    private String name;
-    private String ingredients;
-    private String instructions;
-    private String imageUrl;
+    public String title, ingredients, instructions, imageUrl, userId;
 
-    public OwnRecipes() {}
+    public OwnRecipes() {} // Firebase braucht leeren Konstruktor
 
-    public OwnRecipes(String id, String userId, String name, String ingredients, String instructions, String imageUrl) {
-        this.id = id;
-        this.userId = userId;
-        this.name = name;
+    public OwnRecipes(String title, String ingredients, String instructions, String imageUrl, String userId) {
+        this.title = title;
         this.ingredients = ingredients;
         this.instructions = instructions;
         this.imageUrl = imageUrl;
+        this.userId = userId;
     }
 
-    public String getId() {
-        return id;
-    }
+
     public String getUserId() {
         return userId;
     }
 
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
     public String getIngredients(){
         return ingredients;
@@ -39,16 +31,13 @@ public class OwnRecipes {
         return imageUrl;
     }
 
-    public void setId(String id) {
-        this.id = id;
-    }
 
     public void setUserId(String userId) {
         this.userId = userId;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTitle(String name) {
+        this.title = title;
     }
 
     public void setIngredients(String ingredients) {
@@ -62,5 +51,6 @@ public class OwnRecipes {
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
     }
+
 }
 
