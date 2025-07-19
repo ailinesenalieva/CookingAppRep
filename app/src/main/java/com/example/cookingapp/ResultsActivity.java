@@ -87,7 +87,8 @@ public class ResultsActivity extends AppCompatActivity {
 
         card.setOnClickListener(view -> {
             Intent intent = new Intent(ResultsActivity.this, RecipeActivity.class);
-            intent.putExtra("mealData", meal);
+            intent.putExtra("mealname", meal.get("name"));
+
             startActivity(intent);
         });
 
