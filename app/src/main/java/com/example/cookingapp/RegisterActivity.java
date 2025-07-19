@@ -1,23 +1,27 @@
 package com.example.cookingapp;
+
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Button;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-
 public class RegisterActivity extends AppCompatActivity {
-    //elemente aus xml entnehmen
-    private EditText inputname;
-    private EditText inputemail;
-    private EditText inputpassword;
+
+    private EditText inputname, inputemail, inputpassword;
     private Button buttonRegister;
-    //database anbinfung
-    private DatabaseReference rootDatabase;
+
+    private FirebaseAuth mAuth;
+    private DatabaseReference userRef;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,9 +31,10 @@ public class RegisterActivity extends AppCompatActivity {
         inputemail = findViewById(R.id.inputemail);
         inputpassword = findViewById(R.id.inputpassword);
         buttonRegister = findViewById(R.id.buttonRegister);
-        rootDatabase = FirebaseDatabase.getInstance().getReference("user");
-    //wenn register button gedrückt wird -> prüfen ob alles gefüllt ist dann soll in db gespeichert werden
-        //sonst aufforderung zum ausfüllen
+
+        mAuth = FirebaseAuth.getInstance();
+        userRef = FirebaseDatabase.getInstance().getReference("user");
+
         buttonRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -38,21 +43,35 @@ public class RegisterActivity extends AppCompatActivity {
                 String password = inputpassword.getText().toString().trim();
 
                 if (name.isEmpty() || email.isEmpty() || password.isEmpty()) {
-                    Toast.makeText(RegisterActivity.this, "Please fill all of your information!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegisterActivity.this, "Please fill all fields!", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
-                String userId = rootDatabase.push().getKey();
-                User user = new User(name, email, password);
-                rootDatabase.child("user").child(userId).setValue(user);
+                mAuth.createUserWithEmailAndPassword(email, password)
+                        .addOnCompleteListener(task -> {
+                            if (task.isSuccessful()) {
+                                FirebaseUser firebaseUser = mAuth.getCurrentUser();
+                                if (firebaseUser != null) {
+                                    String userId = firebaseUser.getUid();
 
-                Toast.makeText(RegisterActivity.this, "You registered successfully.", Toast.LENGTH_SHORT).show();
-                finish();
-
-                startActivity(new Intent(RegisterActivity.this, HomeActivity.class));
-
-                }
-
+                                    // Speichere User in der Realtime Database
+                                    User user = new User(userId, name, email, password);
+                                    userRef.child(userId).setValue(user)
+                                            .addOnCompleteListener(dbTask -> {
+                                                if (dbTask.isSuccessful()) {
+                                                    Toast.makeText(RegisterActivity.this, "Registration successful!", Toast.LENGTH_SHORT).show();
+                                                    startActivity(new Intent(RegisterActivity.this, HomeActivity.class));
+                                                    finish();
+                                                } else {
+                                                    Toast.makeText(RegisterActivity.this, "Failed to save user data.", Toast.LENGTH_SHORT).show();
+                                                }
+                                            });
+                                }
+                            } else {
+                                Toast.makeText(RegisterActivity.this, "Registration failed: " + task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                            }
+                        });
+            }
         });
     }
 }
