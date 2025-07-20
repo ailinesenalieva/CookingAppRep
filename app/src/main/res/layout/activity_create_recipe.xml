@@ -22,13 +22,13 @@
         android:gravity="top"
         android:hint="@string/zutaten"
         android:inputType="textMultiLine"
-        android:padding="100dp" />
+        android:padding="20dp" />
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/anleitung"
-        android:padding="150dp"
+        android:padding="15dp"
         android:layout_below="@id/inputIngredients"
         android:layout_marginBottom="16dp"
         android:gravity="top"
