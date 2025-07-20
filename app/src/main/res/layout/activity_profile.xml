@@ -1,6 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+    <Button
+        android:id="@+id/logout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/logout"
+        android:layout_marginTop="20dp"/>
+
+    <Button
+        android:id="@+id/createownrecipe"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/createrecipe"
+        android:layout_below="@id/logout"
+        android:layout_marginTop="20dp"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/createownrecipe"
+        android:text="@string/myrecipes"
+        android:id="@+id/txtmyrecipes"/>
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/createownrecipe"
+        android:layout_marginTop="20dp">
+
+        <LinearLayout
+            android:id="@+id/ownrecipesLayout"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"/>
+    </ScrollView>
+</RelativeLayout>
