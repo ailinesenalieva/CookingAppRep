@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -48,10 +49,9 @@ public class RecipeActivity extends AppCompatActivity {
         backtoresults = findViewById(R.id.backtoresults);
         backtohome = findViewById(R.id.backtohome);
         backtoprofile = findViewById(R.id.backtoprofile);
-        cookrecipe = findViewById(R.id.cookrecipe);
+
 
         currentUserId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        cookedRef = FirebaseDatabase.getInstance().getReference("cookedrecipe").child(currentUserId);
         ownRef = FirebaseDatabase.getInstance().getReference("ownrecipes");
 
         // Daten aus vorheriger Activity holen
@@ -67,23 +67,28 @@ public class RecipeActivity extends AppCompatActivity {
         }
 
         backtoresults.setOnClickListener(v -> {
-            Intent intent = new Intent(this, ResultsActivity.class);
+            String searchKeyword = getIntent().getStringExtra("searchTerm");
+            Intent intent = new Intent(RecipeActivity.this, ResultsActivity.class);
             intent.putExtra("searchTerm", searchKeyword);
             startActivity(intent);
+            finish();
         });
 
-        backtohome.setOnClickListener(v -> startActivity(new Intent(this, HomeActivity.class)));
-        backtoprofile.setOnClickListener(v -> startActivity(new Intent(this, ProfileActivity.class)));
+        backtohome.setOnClickListener(new View.OnClickListener() {
+            @Override
+              public void onClick(View v) {
+                  startActivity(new Intent(RecipeActivity.this, HomeActivity.class));
+                                          }
+        });
 
-        cookrecipe.setOnClickListener(v -> {
-            if (isOwnRecipe) {
-                saveOwnRecipe();
-            } else {
-                String cookedID = cookedRef.push().getKey();
-                cookedRef.child(cookedID).setValue(recipetitle.getText().toString());
-                Toast.makeText(this, "Rezept als gekocht gespeichert!", Toast.LENGTH_SHORT).show();
+        backtoprofile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(RecipeActivity.this, ProfileActivity.class));
             }
         });
+
+
     }
 
     private void loadOwnRecipe() {
