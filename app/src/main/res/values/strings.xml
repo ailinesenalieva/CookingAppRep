@@ -27,4 +27,14 @@
 
 
 
+    <string name="rezeptname">Name of your recipes</string>
+    <string name="zutaten">the needed ingredients</string>
+    <string name="anleitung">The instructions</string>
+    <string name="ownimage">Upload a picture for reference (URL only)</string>
+    <string name="saverecipe">Save my recipe</string>
+
+    <string name="logout">Logout</string>
+    <string name="createrecipe">Create own recipe</string>
+    <string name="myrecipes">My own recipes</string>
+
 </resources>
