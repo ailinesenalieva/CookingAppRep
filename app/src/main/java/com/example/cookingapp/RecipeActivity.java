@@ -47,9 +47,9 @@ public class RecipeActivity extends AppCompatActivity {
         String URL = "https://www.themealdb.com/api/json/v1/1/search.php?s=";
         currentUserId = FirebaseAuth.getInstance().getCurrentUser().getUid(); //aktuellen User aus Firebase
 
-        String name = getIntent().getStringExtra("mealName"); //bestimmten mealname bekommen um richtige JSON mit ganzer Information zu erhalten
+        String name = getIntent().getStringExtra("mealname"); //bestimmten mealname bekommen um richtige JSON mit ganzer Information zu erhalten
 
-        if (name == null) {
+        if (name == null || name.isEmpty()) {
             Toast.makeText(this, "No Recipe to be found", Toast.LENGTH_SHORT).show();
             finish();
             return;
