@@ -45,19 +45,20 @@ public class ResultsActivity extends AppCompatActivity {
             noResult.setText(getString(R.string.norecipes));
             resultslayout.addView(noResult);
         }
-
+        //weiterleitung zur suche
         backtobrowse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(ResultsActivity.this, BrowseActivity.class));
                 finish();
             }});
-
+        //weiterleitung zu home
         backhome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(ResultsActivity.this, HomeActivity.class));
             }});
+        //weiterleitung zum profil
         backprofile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -81,10 +82,7 @@ public class ResultsActivity extends AppCompatActivity {
         resultslayout.addView(rowLayout); //zu gesamten view hinzufügen
     }
 
-
-
-
-    private LinearLayout createCard(HashMap<String, String> meal) {
+    private LinearLayout createCard(HashMap<String, String> meal) { //einzeln rezept und bils aus hashmap entnehmen und anzeigen
         LinearLayout card = new LinearLayout(this);
         card.setOrientation(LinearLayout.VERTICAL);
         card.setPadding(8, 8, 8, 8);
@@ -103,7 +101,7 @@ public class ResultsActivity extends AppCompatActivity {
         title.setTextSize(16f);
         card.addView(title);
 
-        card.setOnClickListener(view -> {
+        card.setOnClickListener(view -> {//wenn bild gedrückt wird, dann wird ausgewähltes rezept angezeigt in Recipe Activity
             Intent intent = new Intent(ResultsActivity.this, RecipeActivity.class);
             intent.putExtra("mealname", meal.get("name"));
 
