@@ -1,6 +1,5 @@
 package com.example.cookingapp;
 
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -25,15 +24,8 @@ public class CreateRecipeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_recipe);
 
-
-        SharedPreferences prefs = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+        //holt sich die ID vom aktuell eingeloggten/registrierten User
         userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-
-        if (userId == null) {
-            Toast.makeText(this, "Error: the user is not logged in.", Toast.LENGTH_SHORT).show();
-            finish();
-            return;
-        }
 
         inputTitle = findViewById(R.id.inputTitle);
         inputIngredients = findViewById(R.id.inputIngredients);
@@ -41,17 +33,16 @@ public class CreateRecipeActivity extends AppCompatActivity {
         inputImageUrl = findViewById(R.id.inputImageUrl);
         saveRecipeBtn = findViewById(R.id.saveRecipeBtn);
 
-        recipeRef = FirebaseDatabase.getInstance().getReference("ownrecipes");
-        userRef = FirebaseDatabase.getInstance().getReference("user").child(userId);
+        recipeRef = FirebaseDatabase.getInstance().getReference("ownrecipes"); //ownrecipes ist eine eigene Entität und darauf wird referenziert
+        userRef = FirebaseDatabase.getInstance().getReference("user").child(userId); //userid (attribut) aus dem aktuellen User (Entität) wird mit Rezept zugeordnet
 
         saveRecipeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String id = recipeRef.push().getKey();
+                String id = recipeRef.push().getKey(); //zu jedem neuen Rezept wird eine ID erstellt
                 if (id == null) return;
 
-                OwnRecipes recipe = new OwnRecipes(
-
+                OwnRecipes recipe = new OwnRecipes( //neues OwnRecipes Objekt wird erstellt mit allen Parametern aus der Klasse
                         inputTitle.getText().toString(),
                         inputIngredients.getText().toString(),
                         inputInstructions.getText().toString(),
@@ -59,8 +50,8 @@ public class CreateRecipeActivity extends AppCompatActivity {
                         userId
                 );
 
-                recipeRef.child(id).setValue(recipe);
-                userRef.child("ownrecipes").child(id).setValue(true);
+                recipeRef.child(id).setValue(recipe); //neues Rezept Objekt wird in Firebase unter ownrecipes gespeichert
+                userRef.child("ownrecipes").child(id).setValue(true); //rezept id wird unter der jeweiligen user id gespeichert
 
                 Toast.makeText(CreateRecipeActivity.this, "Recipe saved successfully.", Toast.LENGTH_SHORT).show();
                 finish();
