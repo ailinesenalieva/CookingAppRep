@@ -38,12 +38,8 @@ public class ProfileActivity extends AppCompatActivity {
         createownrecipe = findViewById(R.id.createownrecipe);
         ownrecipesLayout = findViewById(R.id.ownrecipesLayout);
 
+        //holt userid vom aktuellen user aus firebase authentication
         userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        if (userId == null) {
-            Toast.makeText(this, "Error: User is not logged in.", Toast.LENGTH_SHORT).show();
-            finish();
-            return;
-        }
 
         createownrecipe.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,9 +72,9 @@ public class ProfileActivity extends AppCompatActivity {
     private void loadOwnRecipes() {
         ownrecipesLayout.removeAllViews(); // leeres Layout, damit keine Duplikate entstehen
 
-        DatabaseReference userRecipesRef = FirebaseDatabase.getInstance().getReference("ownrecipes");
+        DatabaseReference userRecipesRef = FirebaseDatabase.getInstance().getReference("ownrecipes"); //rezepte filtern nach userid aus ownrecipes und user
         userRecipesRef.orderByChild("userId").equalTo(userId).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
+            @Override //Iteration für jedes rezept - wird zur Darstellung hinzugefügt
             public void onDataChange(DataSnapshot snapshot) {
                 for (DataSnapshot recipeSnap : snapshot.getChildren()) {
                     String title = recipeSnap.child("title").getValue(String.class);
@@ -91,26 +87,26 @@ public class ProfileActivity extends AppCompatActivity {
                 }
             }
 
-            @Override
+            @Override //wenn das laden aus Firebase nicht funktioniert hat
             public void onCancelled(DatabaseError error) {
                 Toast.makeText(ProfileActivity.this, "Error while loading recipes.", Toast.LENGTH_SHORT).show();
             }
         });
     }
 
-    private void addRecipeToUI(OwnRecipes recipe) {
+    private void addRecipeToUI(OwnRecipes recipe) { //eigenes Rezept aus Firebase wird angezeigt
         LinearLayout layout = new LinearLayout(this);
         layout.setOrientation(LinearLayout.VERTICAL);
         layout.setPadding(0, 0, 0, 40);
 
-        TextView title = new TextView(this);
+        TextView title = new TextView(this);//Titel des Rezeptes
         title.setText(recipe.getTitle());
         layout.addView(title);
 
-        ImageView img = new ImageView(this);
+        ImageView img = new ImageView(this); //Bild des Rezeptes
         layout.addView(img);
 
-        new Thread(() -> {
+        new Thread(() -> { //da User eine Bild URL Adresse angibt, muss mithilfe von Bitmap angezeigt
             try {
                 InputStream in = new URL(recipe.imageUrl).openStream();
                 Bitmap bitmap = BitmapFactory.decodeStream(in);
@@ -120,14 +116,14 @@ public class ProfileActivity extends AppCompatActivity {
             }
         }).start();
 
-        TextView ingredients = new TextView(this);
+        TextView ingredients = new TextView(this); //Zutaten vom Rezept
         ingredients.setText(String.format("Ingredients: %s", recipe.getIngredients()));
         layout.addView(ingredients);
 
-        TextView instructions = new TextView(this);
+        TextView instructions = new TextView(this); //Anleitungen vom rezept
         instructions.setText(String.format("Instructions: %s", recipe.getInstructions()));
         layout.addView(instructions);
 
-        ownrecipesLayout.addView(layout);
+        ownrecipesLayout.addView(layout); //eigene Rezepte zu haupt Layout von activity_profile.xml  hinzufügen
     }
 }
