@@ -33,7 +33,7 @@ public class RegisterActivity extends AppCompatActivity {
         buttonRegister = findViewById(R.id.buttonRegister);
 
         mAuth = FirebaseAuth.getInstance();
-        userRef = FirebaseDatabase.getInstance().getReference("user");
+        userRef = FirebaseDatabase.getInstance().getReference("user"); //in Firebase Realtime DB wurde USER Objekt erstellt und je user gibt es Parameter wie aus der USer klasse
 
         buttonRegister.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -42,33 +42,34 @@ public class RegisterActivity extends AppCompatActivity {
                 String email = inputemail.getText().toString().trim();
                 String password = inputpassword.getText().toString().trim();
 
+                //Überprüfen ob EIngaben leer sind
                 if (name.isEmpty() || email.isEmpty() || password.isEmpty()) {
                     Toast.makeText(RegisterActivity.this, "Please fill all fields!", Toast.LENGTH_SHORT).show();
                     return;
                 }
-
-                mAuth.createUserWithEmailAndPassword(email, password)
-                        .addOnCompleteListener(task -> {
+                //erstellen einen neuen Useraccount mit Firebase Authentication
+                mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(task -> {
                             if (task.isSuccessful()) {
                                 FirebaseUser firebaseUser = mAuth.getCurrentUser();
                                 if (firebaseUser != null) {
-                                    String userId = firebaseUser.getUid();
+                                    String userId = firebaseUser.getUid();//erhält eine eigene UserID
 
-                                    // Speichere User in der Realtime Database
+
+                                    // Speichere User in der Realtime Database - user objekt erstellen
                                     User user = new User(userId, name, email, password);
-                                    userRef.child(userId).setValue(user)
-                                            .addOnCompleteListener(dbTask -> {
-                                                if (dbTask.isSuccessful()) {
+                                    //gespeicherter User unter der generierten ID speichern
+                                    userRef.child(userId).setValue(user).addOnCompleteListener(dbTask -> {
+                                                if (dbTask.isSuccessful()) { //Weiterletung zu Home Activity wenn alles korrekt gelaufen ist
                                                     Toast.makeText(RegisterActivity.this, "Registration successful!", Toast.LENGTH_SHORT).show();
                                                     startActivity(new Intent(RegisterActivity.this, HomeActivity.class));
                                                     finish();
-                                                } else {
+                                                } else { //wenn Firebase nicht die User Daten speichern konnte
                                                     Toast.makeText(RegisterActivity.this, "Failed to save user data.", Toast.LENGTH_SHORT).show();
                                                 }
                                             });
-                                }
-                            } else {
-                                Toast.makeText(RegisterActivity.this, "Registration failed: " + task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                                                }
+                                                } else { //wenn die Register an sich nicht funktionietz hat + Grund (falsches Format z.B.)
+                                                    Toast.makeText(RegisterActivity.this, "Registration failed: " + task.getException().getMessage(), Toast.LENGTH_LONG).show();
                             }
                         });
             }
