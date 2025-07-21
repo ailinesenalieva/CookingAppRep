@@ -25,7 +25,7 @@ import java.net.URL;
 
 public class ProfileActivity extends AppCompatActivity {
 
-    private Button logout, createownrecipe;
+    private Button logout, createownrecipe, profilebackhome;
     private LinearLayout ownrecipesLayout;
     private String userId;
 
@@ -37,6 +37,7 @@ public class ProfileActivity extends AppCompatActivity {
         logout = findViewById(R.id.logout);
         createownrecipe = findViewById(R.id.createownrecipe);
         ownrecipesLayout = findViewById(R.id.ownrecipesLayout);
+        profilebackhome = findViewById(R.id.profilebackhome);
 
         //holt userid vom aktuellen user aus firebase authentication
         userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
@@ -47,12 +48,17 @@ public class ProfileActivity extends AppCompatActivity {
                 startActivity(new Intent(ProfileActivity.this, CreateRecipeActivity.class));
             }
         });
-
+        profilebackhome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ProfileActivity.this, HomeActivity.class));
+            }
+        });
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 FirebaseAuth.getInstance().signOut();
-                Intent intent = new Intent(ProfileActivity.this, LoginActivity.class);
+                Intent intent = new Intent(ProfileActivity.this, MainActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); // clear back stack
                 startActivity(intent);
                 Toast.makeText(ProfileActivity.this, "You logged out successfully", Toast.LENGTH_SHORT).show();

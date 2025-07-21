@@ -9,15 +9,22 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/logout"
-        android:layout_marginTop="20dp"/>
-
+        android:layout_marginTop="10dp"/>
+    <Button
+        android:id="@+id/profilebackhome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/home"
+        android:layout_below="@id/logout"
+        android:layout_marginTop="10dp"
+        />
     <Button
         android:id="@+id/createownrecipe"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/createrecipe"
-        android:layout_below="@id/logout"
-        android:layout_marginTop="20dp"
+        android:layout_below="@id/profilebackhome"
+        android:layout_marginTop="10dp"
         />
     <TextView
         android:layout_width="match_parent"
