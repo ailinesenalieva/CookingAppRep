@@ -12,9 +12,8 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class HomeActivity extends AppCompatActivity {
 
-    private Button buttonhomesearch;
-    private Button buttonprofile;
-    private Button homelogout;
+    private Button buttonhomesearch, buttonprofile, homelogout;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,32 +21,38 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         buttonhomesearch = findViewById(R.id.buttonhomesearch);
-        buttonprofile= findViewById(R.id.buttonprofile);
+        buttonprofile = findViewById(R.id.buttonprofile);
         homelogout = findViewById(R.id.homelogout);
 
-        //weiterführung zu Profile des Users
+
+        //Weiterleitung zum Profil
         buttonprofile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(HomeActivity.this, ProfileActivity.class));
             }
         });
-        //weiterführung zur search actiivty
+        //Weiterleitung zur Suche von Rezepten
         buttonhomesearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-            startActivity(new Intent(HomeActivity.this, BrowseActivity.class));
+                startActivity(new Intent(HomeActivity.this, BrowseActivity.class));
             }
         });
+        //Weiterleitung zum Logout
         homelogout.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                FirebaseAuth.getInstance().signOut();
-                Intent intent = new Intent(HomeActivity.this, LoginActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); // clear back stack
+            public void onClick(View view) {
+                FirebaseAuth.getInstance().signOut(); //logging out
+                Intent intent = new Intent(HomeActivity.this, MainActivity.class); //wird wieder zu Main weitergeleitet
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); //sodass wieder zurück zu gehen nicht möglich ist
                 startActivity(intent);
                 Toast.makeText(HomeActivity.this, "You logged out successfully", Toast.LENGTH_SHORT).show();
             }
         });
+
     }
+
+
+
 }
