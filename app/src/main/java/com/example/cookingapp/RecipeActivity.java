@@ -31,7 +31,6 @@ public class RecipeActivity extends AppCompatActivity {
     private Button backtohome, backtoprofile, backtoresults, cookrecipe;
 
     private DatabaseReference cookedRef, ownRef;
-    private String searchKeyword = "chicken"; // fallback
     private boolean isOwnRecipe = false;
     private String imageUrl;
 
@@ -51,7 +50,7 @@ public class RecipeActivity extends AppCompatActivity {
         backtoprofile = findViewById(R.id.backtoprofile);
 
 
-        currentUserId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        currentUserId = FirebaseAuth.getInstance().getCurrentUser().getUid(); //aktuellen User aus Firebase
         ownRef = FirebaseDatabase.getInstance().getReference("ownrecipes");
 
         // Daten aus vorheriger Activity holen
