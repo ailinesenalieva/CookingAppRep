@@ -5,6 +5,7 @@ public class OwnRecipes {
 
     public OwnRecipes() {} // leerer Konstruktor für firebase
 
+    //OwnRecipes kLasse mit allen  variablen
     public OwnRecipes(String title, String ingredients, String instructions, String imageUrl, String userId) {
         this.title = title;
         this.ingredients = ingredients;
