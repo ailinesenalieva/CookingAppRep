@@ -37,4 +37,8 @@
     <string name="createrecipe">Create own recipe</string>
     <string name="myrecipes">My own recipes</string>
 
+    <string name="welcomehome">Welcome fellow Cook!</string>
+
+    <string name="norecipes">Sadly there are no recipes for your search.</string>
+
 </resources>
