@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -17,7 +18,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/txthome"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="20dp"
         android:paddingStart="8dp"
         android:paddingTop="4dp"
         android:paddingEnd="8dp"
@@ -30,7 +31,7 @@
         android:layout_width="201dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/buttonhomesearch"
-        android:layout_marginTop="46dp"
+        android:layout_marginTop="16dp"
         android:paddingStart="8dp"
         android:paddingTop="4dp"
         android:paddingEnd="8dp"
@@ -42,14 +43,13 @@
         android:layout_width="201dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/buttonhomesearch"
-        android:layout_marginTop="41dp"
+        android:layout_marginTop="16dp"
         android:paddingStart="8dp"
         android:paddingTop="4dp"
         android:paddingEnd="8dp"
         android:paddingBottom="4dp"
         android:layout_alignParentEnd="true"
         android:text="@string/logout" />
-
 
 
 </RelativeLayout>
