@@ -2,13 +2,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-        <!-- Navi-->
+    <!-- Inhalt in einem LinearLayout einbetten -->
     <LinearLayout
         android:orientation="vertical"
-        android:padding="16dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:padding="16dp">
 
+        <!-- Navi -->
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
@@ -16,34 +17,33 @@
             android:gravity="end"
             android:layout_marginBottom="8dp">
 
-            <Button android:id="@+id/backtohome"
-                android:layout_width="wrap_content"
+            <Button
+                android:id="@+id/backtohome"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:text="@string/home" />
 
-            <Button android:id="@+id/backtoprofile"
-                android:layout_width="wrap_content"
+            <Button
+                android:id="@+id/backtoprofile"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:text="@string/profile" />
 
             <Button
                 android:id="@+id/backtoresults"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:text="@string/backtobrowse" />
         </LinearLayout>
-
-
-
-
 
         <ImageView
             android:id="@+id/recipeimg"
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:layout_marginBottom="20dp"
-            />
-
+            android:layout_marginBottom="20dp" />
 
         <TextView
             android:id="@+id/recipetitle"
@@ -51,8 +51,7 @@
             android:layout_height="wrap_content"
             android:textSize="24sp"
             android:textStyle="bold"
-            android:layout_marginBottom="20dp"/>
-
+            android:layout_marginBottom="20dp" />
 
         <TextView
             android:id="@+id/ingredients"
@@ -61,16 +60,13 @@
             android:layout_marginBottom="17dp"
             android:textSize="12sp" />
 
-
         <TextView
             android:id="@+id/instructions"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="16sp"
-            android:layout_marginBottom="16dp"/>
+            android:layout_marginBottom="16dp" />
 
+    </LinearLayout>
 
-
-
-   </LinearLayout>
 </ScrollView>

@@ -44,6 +44,25 @@ public class RecipeActivity extends AppCompatActivity {
         backtohome = findViewById(R.id.backtohome);
         backtoprofile = findViewById(R.id.backtoprofile);
 
+        backtoresults.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(RecipeActivity.this, BrowseActivity.class));
+            }
+        });
+        backtohome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(RecipeActivity.this, HomeActivity.class));
+            }
+        });
+        backtoprofile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(RecipeActivity.this, ProfileActivity.class));
+            }
+        });
+
         String URL = "https://www.themealdb.com/api/json/v1/1/search.php?s=";
         currentUserId = FirebaseAuth.getInstance().getCurrentUser().getUid(); //aktuellen User aus Firebase
 
@@ -97,24 +116,7 @@ public class RecipeActivity extends AppCompatActivity {
 
 
 
-        backtoresults.setOnClickListener(new View.OnClickListener() {
-             @Override
-             public void onClick(View v) {
-                 startActivity(new Intent(RecipeActivity.this, BrowseActivity.class));
-             }
-         });
-        backtohome.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(RecipeActivity.this, HomeActivity.class));
-            }
-        });
-        backtoprofile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(RecipeActivity.this, ProfileActivity.class));
-            }
-        });
+
     }}
 
 
